@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Thailander — Menu</title>
+  <meta name="description" content="Digital menu for Thailander restaurant." />
+  <link rel="manifest" href="./manifest.webmanifest">
+  <meta name="theme-color" content="#101010" />
+  <link rel="apple-touch-icon" href="./icons/app-icon-192.png">
+  <link rel="preload" href="./images/01.png" as="image" />
+  <link rel="stylesheet" href="./styles.css?v=lang1" />
+  <script defer src="./script.js?v=lang1"></script>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" id="tabs">
+      <a href="#recommendations" data-i18n="tab_reco">Recommendations</a>
+      <a href="#starters" data-i18n="tab_starters">Starters</a>
+      <a href="#mains" data-i18n="tab_mains">Mains</a>
+      <a href="#desserts" data-i18n="tab_desserts">Desserts</a>
+    </nav>
+    <button id="langToggle" class="lang-toggle" aria-label="Switch language">PT</button>
+  </header>
+
+  <main>
+    <section class="hero" id="start" aria-label="Cover">
+      <img data-img="01" src="./images/01.png" alt="Thailander — Menu cover" loading="eager" />
+    </section>
+
+    <section id="recommendations" class="section">
+      <h2 data-i18n="h2_reco">Recommendations</h2>
+      <figure class="menu-page">
+        <img data-img="02" src="./images/02.png" alt="Recommendations page" loading="lazy" />
+      </figure>
+    </section>
+
+    <section id="starters" class="section">
+      <h2 data-i18n="h2_starters">Starters</h2>
+      <figure class="menu-page">
+        <img data-img="03" src="./images/03.png" alt="Starters — page 1" loading="lazy" />
+      </figure>
+      <figure class="menu-page">
+        <img data-img="04" src="./images/04.png" alt="Starters — page 2" loading="lazy" />
+      </figure>
+    </section>
+
+    <section id="mains" class="section">
+      <h2 data-i18n="h2_mains">Mains</h2>
+      <figure class="menu-page">
+        <img data-img="05" src="./images/05.png" alt="Mains — page 1" loading="lazy" />
+      </figure>
+      <figure class="menu-page">
+        <img data-img="06" src="./images/06.png" alt="Mains — page 2" loading="lazy" />
+      </figure>
+      <figure class="menu-page">
+        <img data-img="07" src="./images/07.png" alt="Mains — page 3" loading="lazy" />
+      </figure>
+    </section>
+
+    <section id="desserts" class="section">
+      <h2 data-i18n="h2_desserts">Desserts</h2>
+      <figure class="menu-page">
+        <img data-img="08" src="./images/08.png" alt="Desserts" loading="lazy" />
+      </figure>
+    </section>
+  </main>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <dialog id="lightbox" class="lightbox" aria-label="Image enlargement">
+    <img id="lightboxImg" alt="" />
+    <button id="lightboxClose" aria-label="Close">✕</button>
+  </dialog>
+
+  <footer class="footer">
+    <small>© <span id="year"></span> Thailander • <span data-i18n="footer_viewonly">View-only menu</span></small>
+  </footer>
+</body>
+</html>
