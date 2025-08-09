@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
   const lightboxClose = document.getElementById('lightboxClose');
-  const langBtn = document.getElementById('langToggle');
+  const btnEN = document.getElementById('langEN');
+  const btnPT = document.getElementById('langPT');
 
   // Back to top show/hide
   const onScroll = () => {
@@ -28,14 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lightbox.open) closeLb(); });
 
   // Year
-  document.getElementById('year').textContent = new Date().getFullYear();
+  const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
 
-  // PWA registration (relative path)
+  // PWA registration
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js?v=lang1').catch(() => {});
+    navigator.serviceWorker.register('./sw.js?v=rows2').catch(() => {});
   }
 
-  // --- Language toggle (EN/PT) ---
+  // --- Language switcher ---
   const I18N = {
     en: {
       tab_reco: 'Recommendations',
@@ -47,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
       h2_mains: 'Mains',
       h2_desserts: 'Desserts',
       footer_viewonly: 'View-only menu',
-      btn: 'PT',
       suffix: ''
     },
     pt: {
@@ -60,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
       h2_mains: 'Pratos principais',
       h2_desserts: 'Sobremesas',
       footer_viewonly: 'Menu para consulta',
-      btn: 'EN',
       suffix: '-pt'
     }
   };
@@ -71,23 +70,21 @@ document.addEventListener('DOMContentLoaded', () => {
       const key = el.getAttribute('data-i18n');
       if (dict[key]) el.textContent = dict[key];
     });
-    // swap images
     document.querySelectorAll('img[data-img]').forEach(img => {
-      const base = img.getAttribute('data-img'); // e.g., "03"
-      const suffix = dict.suffix; // '' for EN, '-pt' for PT
-      img.src = `./images/${base}${suffix}.png`;
+      const base = img.getAttribute('data-img');
+      img.src = `./images/${base}${dict.suffix}.png`;
     });
-    // update button label
-    langBtn.textContent = dict.btn;
-    // store
+    // button states
+    btnEN.classList.toggle('active', lang === 'en');
+    btnPT.classList.toggle('active', lang === 'pt');
+    btnEN.setAttribute('aria-pressed', String(lang === 'en'));
+    btnPT.setAttribute('aria-pressed', String(lang === 'pt'));
     localStorage.setItem('menu_lang', lang);
   };
 
   const current = localStorage.getItem('menu_lang') || 'en';
   applyLang(current);
 
-  langBtn.addEventListener('click', () => {
-    const next = (localStorage.getItem('menu_lang') || 'en') === 'en' ? 'pt' : 'en';
-    applyLang(next);
-  });
+  btnEN.addEventListener('click', () => applyLang('en'));
+  btnPT.addEventListener('click', () => applyLang('pt'));
 });

@@ -9,18 +9,25 @@
   <meta name="theme-color" content="#101010" />
   <link rel="apple-touch-icon" href="./icons/app-icon-192.png">
   <link rel="preload" href="./images/01.png" as="image" />
-  <link rel="stylesheet" href="./styles.css?v=lang1" />
-  <script defer src="./script.js?v=lang1"></script>
+  <link rel="stylesheet" href="./styles.css?v=rows2" />
+  <script defer src="./script.js?v=rows2"></script>
 </head>
 <body>
   <header class="topbar">
-    <nav class="nav" id="tabs">
-      <a href="#recommendations" data-i18n="tab_reco">Recommendations</a>
-      <a href="#starters" data-i18n="tab_starters">Starters</a>
-      <a href="#mains" data-i18n="tab_mains">Mains</a>
-      <a href="#desserts" data-i18n="tab_desserts">Desserts</a>
-    </nav>
-    <button id="langToggle" class="lang-toggle" aria-label="Switch language">PT</button>
+    <div class="row nav-row">
+      <nav class="nav" id="tabs">
+        <a href="#recommendations" data-i18n="tab_reco">Recommendations</a>
+        <a href="#starters" data-i18n="tab_starters">Starters</a>
+        <a href="#mains" data-i18n="tab_mains">Mains</a>
+        <a href="#desserts" data-i18n="tab_desserts">Desserts</a>
+      </nav>
+    </div>
+    <div class="row tool-row">
+      <div class="lang-group" role="group" aria-label="Language selector">
+        <button class="lang-btn" id="langEN" data-lang="en" aria-pressed="true">EN</button>
+        <button class="lang-btn" id="langPT" data-lang="pt" aria-pressed="false">PT</button>
+      </div>
+    </div>
   </header>
 
   <main>
